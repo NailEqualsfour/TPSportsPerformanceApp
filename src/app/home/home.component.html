@@ -4,12 +4,45 @@
         <form class="was-validated">
             <h2>Student Details</h2>
             <div class="form-group">
+                <label>Test Type </label>
+                <br><br>
+                <select class="form-select" placeholder="Enter Test Type" required>
+                    <option value="1">Base</option>
+                    <option value="2">Pre</option>
+                    <option value="3">Post</option>
+                </select>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <br>
+            <div class="form-group">
                 <label>Athlete Name </label>
                 <br><br>
                 <input class="form-control" type="text" placeholder="Enter Name" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
+            <br>
+            <label>Gender</label>
+            <br><br>
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Male
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                           Female
+                        </label>
+                    </div>
+                </div>
+            </div>            
             <br>
             <div class="form-group">
                 <label>CCA </label>
@@ -61,9 +94,8 @@
             <br>
         </form>
 
-        <button class="btn btn-primary" type="submit"> Submit </button>
+        <button class="btn btn-primary" type="submit" style="margin-right: 20px;">Submit</button>
+        <button class="btn btn-primary" type="submit">Save</button>
+
     </div>
     <br>
-
-    <style>
-</style>

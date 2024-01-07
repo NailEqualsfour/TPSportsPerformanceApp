@@ -15,6 +15,8 @@ import { MedicineballComponent } from './Stations/medicineball/medicineball.comp
 import { AgilityComponent } from './Stations/agility/agility.component';
 import { SprintComponent } from './Stations/sprint/sprint.component';
 import { InterrecoveryComponent } from './Stations/interrecovery/interrecovery.component';
+import { HandeyeComponent } from './Stations/handeye/handeye.component';
+import { TwentymsprintComponent } from './Stations/twentymsprint/twentymsprint.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { InterrecoveryComponent } from './Stations/interrecovery/interrecovery.c
     MedicineballComponent,
     AgilityComponent,
     SprintComponent,
-    InterrecoveryComponent
+    InterrecoveryComponent,
+    HandeyeComponent,
+    TwentymsprintComponent
   ],
   imports: [
     BrowserModule,
