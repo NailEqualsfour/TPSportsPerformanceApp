@@ -9,10 +9,13 @@ import { SprintComponent } from './Stations/sprint/sprint.component';
 import { InterrecoveryComponent } from './Stations/interrecovery/interrecovery.component';
 import { HandeyeComponent } from './Stations/handeye/handeye.component';
 import { TwentymsprintComponent } from './Stations/twentymsprint/twentymsprint.component';
+import { ImportComponent } from './import/import.component';
+import { ExportComponent } from './export/export.component';
+import { AddstudentComponent } from './addstudent/addstudent.component';
 
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
+  {path: '', component:HomeComponent},
   {path: 'body', component: BodycompComponent},
   {path: 'vert', component: VertjumpComponent},
   {path: 'medi', component: MedicineballComponent},
@@ -21,6 +24,9 @@ const routes: Routes = [
   {path: 'inter', component: InterrecoveryComponent},
   {path: 'handeye', component: HandeyeComponent},
   {path: 'twenty', component: TwentymsprintComponent},
+  {path: 'import', component: ImportComponent},
+  {path: 'export', component: ExportComponent},
+  {path: 'addstudent', component: AddstudentComponent},
 ];
 
 @NgModule({

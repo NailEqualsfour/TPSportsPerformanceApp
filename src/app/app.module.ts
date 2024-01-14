@@ -17,6 +17,9 @@ import { SprintComponent } from './Stations/sprint/sprint.component';
 import { InterrecoveryComponent } from './Stations/interrecovery/interrecovery.component';
 import { HandeyeComponent } from './Stations/handeye/handeye.component';
 import { TwentymsprintComponent } from './Stations/twentymsprint/twentymsprint.component';
+import { ImportComponent } from './import/import.component';
+import { ExportComponent } from './export/export.component';
+import { AddstudentComponent } from './addstudent/addstudent.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { TwentymsprintComponent } from './Stations/twentymsprint/twentymsprint.c
     SprintComponent,
     InterrecoveryComponent,
     HandeyeComponent,
-    TwentymsprintComponent
+    TwentymsprintComponent,
+    ImportComponent,
+    ExportComponent,
+    AddstudentComponent
   ],
   imports: [
     BrowserModule,
