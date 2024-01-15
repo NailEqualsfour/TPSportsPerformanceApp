@@ -1,0 +1,73 @@
+<div class="grid-container">
+    <div class="form-container">
+        <form class="was-validated">
+            <h1>Export</h1>
+            <br>
+            <h2>Export as CSV</h2>
+            <div class="form-group">
+                <div class="form-group">
+                    <label>Test Type </label>
+                    <select class="form-select" placeholder="Enter Test Type" required>
+                        <option value="1">Base</option>
+                        <option value="2">Pre</option>
+                        <option value="3">Post</option>
+                    </select>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <label>Gender</label>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Male
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Export</button>
+        </form>
+    </div>
+
+    <div class="form-image">
+        <img src="assets/temasek.jpg" alt="Image Description">
+    </div>
+</div>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .form-container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .form-container form {
+        width: 100%;
+    }
+
+    .form-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-image img {
+        width: 100%;
+        border-radius: 10px;
+    }
+</style>

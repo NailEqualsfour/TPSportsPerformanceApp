@@ -1,0 +1,50 @@
+<div class="grid-container">
+    <div class="form-container">
+        <form class="was-validated">
+            <h1>Import Student Information</h1>
+            <br>
+            <h2>Import as CSV</h2>
+            <div class="form-group">
+                <div class="form-group">
+                    <label>Test Type </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-dark" type="submit" style="margin-right: 20px;" >Import</button>
+        </form>
+    </div>
+
+    <div class="form-image">
+        <img src="assets/temasek.jpg" alt="Image Description">
+    </div>
+</div>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .form-container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .form-container form {
+        width: 100%;
+    }
+
+    .form-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-image img {
+        width: 100%;
+        border-radius: 10px;
+    }
+</style>
