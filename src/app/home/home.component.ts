@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  currentStation = "Body Composition";
+
+  stationChange(newStation: string) {
+    this.currentStation = newStation;
+  }
+
 }

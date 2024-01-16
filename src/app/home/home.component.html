@@ -1,116 +1,256 @@
 <div class="container-fluid">
-    <div class="form-container">
-        <h1> <img src="assets/tp.jpeg" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;"> TP Sports Performance</h1>
-        <form class="was-validated">
-            <h2>Student Details</h2>
-            <div class="form-group">
-                <label>Test Type </label>
-                <select class="form-select" placeholder="Enter Test Type" required>
-                    <option value="1">Base</option>
-                    <option value="2">Pre</option>
-                    <option value="3">Post</option>
-                </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Athlete Name</label>
-                <select class="form-select" placeholder="Choose Athlete" required>
-                    <option value="1">Base</option>
-                    <option value="2">Pre</option>
-                    <option value="3">Post</option>
-                </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <br>
-            <label>Gender</label>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Male
-                        </label>
-                    </div>
+    <div class="row">
+        <!-- Student and Station Detail Panel Start-->
+        <div class="form-container col-md-5">
+            <h1> <img src="assets/tp.jpeg" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;"> TP Sports Performance</h1>
+            <form class="was-validated">
+                <h2>Student Details</h2>
+                <div class="form-group">
+                    <label>Test Type </label>
+                    <select class="form-select" placeholder="Enter Test Type" required>
+                        <option value="1">Base</option>
+                        <option value="2">Pre</option>
+                        <option value="3">Post</option>
+                    </select>
                 </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                           Female
-                        </label>
-                    </div>
+                <br>
+                <div class="form-group">
+                    <label>Athlete Name</label>
+                    <select class="form-select" placeholder="Choose Athlete" required>
+                        <option value="1">Base</option>
+                        <option value="2">Pre</option>
+                        <option value="3">Post</option>
+                    </select>
                 </div>
-            </div>            
-            <br>
-            <div class="form-group">
-                <label>CCA </label>
-                <select class="form-select" placeholder="Enter CCA" required>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <br>
-            <h2>Station Details</h2>
-            <div class="form-group">
-                <label>Station </label>
-                <select class="form-select" required>
-                    <option value="1">Body Composition</option>
-                    <option value="2">Vertical Jump</option>
-                    <option value="3">Medicine Ball</option>
-                    <option value="4">Illinois Agility</option>
-                    <option value="5">Anaerobic Sprint</option>
-                    <option value="6">Intermittent Recovery</option>
-                    <option value="7">Handeye Coordination</option>
-                    <option value="8">20m Sprint</option>
-                </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Admin </label>
-                <input class="form-control" placeholder="Enter Admin" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Date of Birth </label>
-                <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" 
-                        required>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                            <img src="assets/calender.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-                        </button>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
+                <br>
+                <h2>Station Details</h2>
+                <div class="form-group">
+                    <label>Station </label>
+                    <select #stationSelect class="form-select" (change)="stationChange(stationSelect.value)" required>
+                        <option value="Body Composition">Body Composition</option>
+                        <option value="Vertical Jump">Vertical Jump</option>
+                        <option value="Medicine Ball">Medicine Ball</option>
+                        <option value="Illinois Agility">Illinois Agility</option>
+                        <option value="Anaerobic Sprint">Anaerobic Sprint</option>
+                        <option value="Intermittent Recovery">Intermittent Recovery</option>
+                        <option value="Hand eye Coordination">Hand eye Coordination</option>
+                        <option value="20m Sprint">20m Sprint</option>
+                    </select>
                 </div>
-            </div>
+                <br>
+            </form>
+            <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Submit</button>
+        </div>
+        <!-- Student and Station Detail Panel End-->
+        
+        <!-- Body Composition Panel Start-->
+        <div *ngIf="currentStation == 'Body Composition'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Body Composition</h1>
+                <br>
+                <div class="form-group">
+                    <label>Height (CM) </label>
+                    <br>
+                    <input class="form-control" type="number" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><label>Body Mass (KG) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>Body Fat (%) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>Muscle Mass (KG) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Body Composition Panel End-->
 
-            <br>
-        </form>
+        <!-- Vertical Jump Panel Start-->
+        <div *ngIf="currentStation == 'Vertical Jump'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Vertical Jump</h1>
+                <br>
+                <div class="form-group">
+                    <label>1st Attempt (CM) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><br><label>2nd Attempt (CM) </label>
+                    <input class="form-control" type="number" step="0.01"required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <br>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Vertical Jump Panel End-->
 
-        <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Submit</button>
-        <button class="btn btn-dark" type="submit">Save</button>
+        <!-- Medicine Ball Panel Start-->
+        <div *ngIf="currentStation == 'Medicine Ball'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Medicine Ball (Forward Chest)</h1>
+                <br>
+                <div class="form-group">
+                    <label>Ball weight </label>
+                    <select class="form-select" placeholder="Enter Weight" required>
+                        <option value="1">3 Kg</option>
+                        <option value="2">4 Kg</option>
+                        <option value="3">5 Kg</option>
+                    </select>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>1st Attempt (CM) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><label>2nd Attempt (CM) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <br>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Medicine Ball Panel End-->
+
+        <!-- Illinois Agility Panel Start-->
+        <div *ngIf="currentStation == 'Illinois Agility'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Illinois Agility</h1>
+                <br>
+                <div class="form-group">
+                    <label>1st Attempt (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><label>2nd Attempt (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Illinois Agility Panel End-->
+
+        <!-- Anaerobic Sprint Panel Start-->
+        <div *ngIf="currentStation == 'Anaerobic Sprint'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Anaerobic Sprint</h1>
+                <br>
+                <div class="form-group">
+                    <label>Lap 1 (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01"required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><label>Lap 2 (Seconds)</label>
+                    <input class="form-control" type="number" step="0.01"required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>Lap 3 (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01"required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>Lap 4 (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>Lap 5 (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br>
+                    <label>Lap 6 (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Anaerobic Sprint Panel End-->
+
+        <!-- Intermittent Recovery Panel Start-->
+        <div *ngIf="currentStation == 'Intermittent Recovery'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Intermittent Recovery</h1>
+                <br>
+                <div class="form-group">
+                    <label>Level</label>
+                    <input class="form-control" type="number" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Intermittent Recovery Panel End-->
+
+        <!-- Hand eye Coordination Panel Start-->
+        <div *ngIf="currentStation == 'Hand eye Coordination'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>Hand eye Coordination</h1>
+                <br>
+                <div class="form-group">
+                    <label>1st Attempt (Successful Catches) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><label>2nd Attempt (Successful Catches) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- Hand eye Coordination Panel End-->
+
+        <!-- 20m Sprint Panel Start-->
+        <div *ngIf="currentStation == '20m Sprint'" class="form-container col-md-7 station-bg">
+            <form class="was-validated">
+                <h1>20m Sprint</h1>
+                <br>
+                <div class="form-group">
+                    <label>1st Attempt (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <br><label>2nd Attempt (Seconds) </label>
+                    <input class="form-control" type="number" step="0.01" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </form>
+            <button class="btn btn-dark" type="submit">Save</button>
+        </div>
+        <!-- 20m Sprint Panel End-->
 
     </div>
+</div>
 
 
     <style>
         .form-container {
-            width: 100%;
-            padding: 20px;
+            padding: 60px;
             margin: 0 auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            /* Add margin at the bottom of the form container */
+        }
+        .station-bg {
+            background-color: #E2F1E5;
         }
     </style>
