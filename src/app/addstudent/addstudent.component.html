@@ -1,8 +1,18 @@
 <div class="container-fluid">
     <div class="form-container">
-        <h1>Add Athlete</h1>
+        <h1><strong>Import Student Information</strong></h1>
+        <br>
+        <h2><strong>Import as CSV</strong></h2>
+        <div class="form-group">
+            <div class="form-group">
+                <input id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+            </div>
+        </div>
+        <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Import</button>
+        <br><br>
+        <h1><strong>Add Athlete</strong></h1>
         <form class="was-validated">
-            <h2>Student Details</h2>
+            <h2><strong>Student Details</strong></h2>
             <div class="form-group">
                 <label>Test Type </label>
                 <select class="form-select" placeholder="Enter Test Type" required>
@@ -10,15 +20,11 @@
                     <option value="2">Pre</option>
                     <option value="3">Post</option>
                 </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <br>
             <div class="form-group">
                 <label>Athlete </label>
                 <input class="form-control" placeholder="Enter Athlete Name" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <br>
             <label>Gender</label>
@@ -26,20 +32,16 @@
                 <div class="col">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Male
-                        </label>
+                        <label class="form-check-label" for="flexRadioDefault1">Male</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                           Female
-                        </label>
+                        <label class="form-check-label" for="flexRadioDefault2">Female</label>
                     </div>
                 </div>
-            </div>            
+            </div>
             <br>
             <div class="form-group">
                 <label>CCA </label>
@@ -48,65 +50,40 @@
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
-            </div>
-            <br>
-            <h2>Station Details</h2>
-            <div class="form-group">
-                <label>Station </label>
-                <select class="form-select" required>
-                    <option value="1">Body Composition</option>
-                    <option value="2">Vertical Jump</option>
-                    <option value="3">Medicine Ball</option>
-                    <option value="4">Illinois Agility</option>
-                    <option value="5">Anaerobic Sprint</option>
-                    <option value="6">Intermittent Recovery</option>
-                    <option value="7">Handeye Coordination</option>
-                    <option value="8">20m Sprint</option>
-                </select>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <br>
             <div class="form-group">
                 <label>Admin </label>
                 <input class="form-control" placeholder="Enter Admin" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <br>
             <div class="form-group">
                 <label>Date of Birth </label>
                 <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" 
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
                         required>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                             <img src="assets/calender.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
                         </button>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                 </div>
             </div>
-
             <br>
         </form>
 
-        <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Submit</button>
+        <button class="btn btn-dark" type="submit" value="submit" style="margin-right: 20px;">Submit</button>
         <button class="btn btn-dark" type="submit">Save</button>
-
     </div>
+</div>
 
-
-    <style>
-        .form-container {
-            width: 100%;
-            padding: 20px;
-            margin: 0 auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            /* Add margin at the bottom of the form container */
-        }
-    </style>
+<style>
+    .form-container {
+        width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        /* Add margin at the bottom of the form container */
+    }
+</style>
