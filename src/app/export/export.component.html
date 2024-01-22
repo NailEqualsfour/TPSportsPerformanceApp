@@ -1,30 +1,36 @@
 <div class="grid-container">
     <div class="form-container">
         <form class="was-validated">
-            <h1><strong>Export</strong></h1>
+            <h1>Export</h1>
             <br>
-            <h2><strong>Export as CSV</strong></h2>
+            <h2>Export as CSV</h2>
             <div class="form-group">
                 <div class="form-group">
-                    <label>Test Type</label>
+                    <label>Test Type </label>
                     <select class="form-select" placeholder="Enter Test Type" required>
                         <option value="1">Base</option>
                         <option value="2">Pre</option>
                         <option value="3">Post</option>
                     </select>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <label>Gender</label>
                 <div class="row">
                     <div class="col">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Male
+                            </label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Female
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -34,65 +40,34 @@
         </form>
     </div>
 
-    <div class="form-container">
-        <h1><strong>Dashboard</strong></h1>
-        <br>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Admin No.</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">CCA</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>2183934F</td>
-                    <td>Male</td>
-                    <td>Basketball</td>
-                    <td><button class="btn btn-dark">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>2394834G</td>
-                    <td>Male</td>
-                    <td>Badminton</td>
-                    <td><button class="btn btn-dark">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Lesley</td>
-                    <td>2357293Y</td>
-                    <td>Female</td>
-                    <td>Soccer</td>
-                    <td><button class="btn btn-dark">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="form-image">
+        <img src="assets/temasek.jpg" alt="Image Description">
     </div>
 </div>
 
 <style>
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr; /* One column */
-        gap: 20px; /* Adjust the gap between elements */
-        margin: 20px; /* Add margin for overall spacing */
+        grid-template-columns: 50% 50%;
     }
 
     .form-container {
-        padding: 40px;
-        font-family: 'Filson Pro', sans-serif;
-        background-color: #f8f9fa; /* Add a background color for better readability */
+        padding: 20px;
+        border-radius: 10px;
     }
 
-    .form-container:last-child {
-        text-align: center; /* Align text in the second form container to the center */
+    .form-container form {
+        width: 100%;
+    }
+
+    .form-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-image img {
+        width: 100%;
+        border-radius: 10px;
     }
 </style>
