@@ -170,10 +170,4 @@ export class HomeComponent{
 
   submit(){}
 
-  currentStation = "Body Composition";
-
-  stationChange(newStation: string) {
-    this.currentStation = newStation;
-  }
-
 }

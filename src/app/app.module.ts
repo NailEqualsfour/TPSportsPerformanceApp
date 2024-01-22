@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { ImportComponent } from './import/import.component';
 import { ExportComponent } from './export/export.component';
 import { AddstudentComponent } from './addstudent/addstudent.component';
 
@@ -31,6 +32,7 @@ const firebaseConfig = {
     NavComponent,
     FooterComponent,
     HomeComponent,
+    ImportComponent,
     ExportComponent,
     AddstudentComponent
   ],
