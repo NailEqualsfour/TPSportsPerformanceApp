@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "TPSportsPerformanceApp"
+  "defaultProject": "TPSportsPerformanceApp",
+  "cli": {
+    "analytics": false
+  }
 }
