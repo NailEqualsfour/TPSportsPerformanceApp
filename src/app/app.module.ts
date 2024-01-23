@@ -12,9 +12,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ExportComponent } from './export/export.component';
 import { AddstudentComponent } from './addstudent/addstudent.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDkCipkP-5QWmaEr70Kz9Hink-f0e_bH8",
@@ -43,6 +46,7 @@ const firebaseConfig = {
     FormsModule,
     NgbModule,
     RouterModule.forRoot([]),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
