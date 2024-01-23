@@ -18,8 +18,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from '../environments/environment';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDkCipkP-5QWmaEr70Kz9Hink-f0e_bH8",
