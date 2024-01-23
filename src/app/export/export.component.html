@@ -45,33 +45,15 @@
                     <th scope="col">Admin No.</th>
                     <th scope="col">Gender</th>
                     <th scope="col">CCA</th>
-                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>2183934F</td>
-                    <td>Male</td>
-                    <td>Basketball</td>
-                    <td><button class="btn btn-dark">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>2394834G</td>
-                    <td>Male</td>
-                    <td>Badminton</td>
-                    <td><button class="btn btn-dark">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Lesley</td>
-                    <td>2357293Y</td>
-                    <td>Female</td>
-                    <td>Soccer</td>
-                    <td><button class="btn btn-dark">Delete</button></td>
+                <tr *ngFor="let athlete of Athlete; let i= index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{athlete.athlete_name}}</td>
+                    <td>{{athlete.admin_no}}</td>
+                    <td>{{athlete.gender}}</td>
+                    <td>{{athlete.cca}}</td>
                 </tr>
             </tbody>
         </table>
