@@ -17,7 +17,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1"
+                                checked>
                             <label class="form-check-label" for="flexRadioDefault1">Male</label>
                         </div>
                     </div>
@@ -45,15 +46,17 @@
                     <th scope="col">Admin No.</th>
                     <th scope="col">Gender</th>
                     <th scope="col">CCA</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let athlete of Athlete; let i= index">
+                <tr *ngFor="let athlete of athletesData; let i= index">
                     <th scope="row">{{i+1}}</th>
                     <td>{{athlete.athlete_name}}</td>
                     <td>{{athlete.admin_no}}</td>
                     <td>{{athlete.gender}}</td>
                     <td>{{athlete.cca}}</td>
+                    <td><button class="btn btn-dark">Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -63,18 +66,23 @@
 <style>
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr; /* One column */
-        gap: 20px; /* Adjust the gap between elements */
-        margin: 20px; /* Add margin for overall spacing */
+        grid-template-columns: 1fr;
+        /* One column */
+        gap: 20px;
+        /* Adjust the gap between elements */
+        margin: 20px;
+        /* Add margin for overall spacing */
     }
 
     .form-container {
         padding: 40px;
         font-family: 'Filson Pro', sans-serif;
-        background-color: #f8f9fa; /* Add a background color for better readability */
+        background-color: #f8f9fa;
+        /* Add a background color for better readability */
     }
 
     .form-container:last-child {
-        text-align: center; /* Align text in the second form container to the center */
+        text-align: center;
+        /* Align text in the second form container to the center */
     }
 </style>

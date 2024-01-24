@@ -25,7 +25,6 @@ export class AddstudentComponent {
   }
   onSubmit() {
     for (let student of this.ExcelData) {
-      console.log(this.ExcelData)
       this.firestore.collection('athletes').add({
         admin_no: student.admin_no,
         athlete_name: student.athlete_name,

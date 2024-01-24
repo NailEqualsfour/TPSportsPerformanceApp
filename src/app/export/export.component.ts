@@ -1,29 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Athlete } from '../athlete.model';
-import { AthleteService } from '../athlete.service';
+import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-export',
   templateUrl: './export.component.html',
   styleUrl: './export.component.css'
 })
-export class ExportComponent implements OnInit{
-  Athlete: Athlete[];
+export class ExportComponent {
+  athletesData: any;
+  subscription: Subscription;
 
-  constructor(private athleteService: AthleteService){}
-
+  constructor(private firestore: AngularFirestore){}
+  
   ngOnInit(){
-    this.athleteService.getAthleteList().subscribe(res=>{
-      this.Athlete =res.map( e=>{
-        return{
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
-        } as unknown as Athlete;
-      })
-    })
+    this.subscription = this.firestore.collection('athletes').snapshotChanges().subscribe(snapshots => {
+      this.athletesData = snapshots.map(snapshot => {
+        const id = snapshot.payload.doc.id;
+        const data = snapshot.payload.doc.data() as { [key: string]: any };
+        return { id, ...data };
+      });
+      this.athletesData.sort((a: any, b: any) => a.athlete_name.localeCompare(b.athlete_name));
+    });
+
   }
-
-
-
 }
-
