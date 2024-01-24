@@ -2,13 +2,16 @@
     <div class="form-container">
         <h1><strong>Import Student Information</strong></h1>
         <br>
+
         <h2><strong>Import as CSV</strong></h2>
+        
         <div class="form-group">
             <div class="form-group">
-                <input id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                <input id="fileSelect" type="file" (change)="ReadExcel($event)"/>
             </div>
         </div>
-        <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Import</button>
+
+        <button class="btn btn-dark" (click)="onSubmit()" type="submit" style="margin-right: 20px;">Import</button>
         <br><br>
         <h1><strong>Add Athlete</strong></h1>
         <form class="was-validated">
