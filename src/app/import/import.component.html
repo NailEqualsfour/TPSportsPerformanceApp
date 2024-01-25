@@ -1,3 +1,4 @@
+<form [formGroup]="form">
 <div class="container-fluid">
     <div class="form-container">
         <h1><strong>Import Student Information</strong></h1>
@@ -25,60 +26,64 @@
                 </select>
             </div>
             <br>
-            <div class="form-group">
-                <label>Athlete </label>
-                <input class="form-control" placeholder="Enter Athlete Name" required>
-            </div>
-            <br>
-            <label>Gender</label>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
-                        <label class="form-check-label" for="flexRadioDefault1">Male</label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">Female</label>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>CCA </label>
-                <select class="form-select" placeholder="Enter CCA" required>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Admin </label>
-                <input class="form-control" placeholder="Enter Admin" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Date of Birth </label>
-                <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
-                        required>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                            <img src="assets/calender.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <br>
         </form>
 
-        <button class="btn btn-dark" type="submit" value="submit" style="margin-right: 20px;">Submit</button>
-        <button class="btn btn-dark" type="submit">Save</button>
+        <div>
+            <label>Admin Number</label>
+            <input id="admin_no" formControlName="admin_no" class="form-control" required>
+        </div>
+        <br><br>
+
+        <div>
+            <label>Athlete </label>
+            <input id="athlete_name" formControlName="athlete_name" class="form-control" required>
+        </div>
+        <br><br>
+
+        <div>
+            <label>CCA </label>
+            <select id="cca" formControlName="cca" class="form-select" required>
+                <option value="Badminton">Badminton</option>
+                <option value="Soccer">Soccer</option>
+                <option value="nil~">nil~</option>
+            </select>
+        </div>
+        <br><br>
+        
+        <label>Gender</label>
+        <div class="row">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="gender" value="Male">
+                    <label class="form-check-label">Male</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="gender" value="Female">
+                    <label class="form-check-label">Female</label>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div>
+            <label>Date of Birth </label>
+            <div class="input-group">
+                <input id="date_of_birth" formControlName="date_of_birth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" required>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                        <img src="assets/calender.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <button (click)="individualImport()" class="btn btn-dark" style="margin-right: 20px;">Individual Import</button>
     </div>
 </div>
+</form>
 
 <style>
     .form-container {
