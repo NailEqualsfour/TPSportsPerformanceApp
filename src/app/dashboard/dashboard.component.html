@@ -45,8 +45,9 @@
                     <th scope="col">Name</th>
                     <th scope="col">Admin No.</th>
                     <th scope="col">Gender</th>
+                    <th scope="col">Date of Birth</th>
                     <th scope="col">CCA</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -55,6 +56,7 @@
                     <td>{{athlete.athlete_name}}</td>
                     <td>{{athlete.admin_no}}</td>
                     <td>{{athlete.gender}}</td>
+                    <td>{{athlete.date_of_birth}}</td>
                     <td>{{athlete.cca}}</td>
                     <td><button (click)="delete(athlete)" class="btn btn-dark">Delete</button></td>
                 </tr>
