@@ -166,8 +166,7 @@ export class HomeComponent{
       }
     });
     this.firestore.doc('athletes/'+this.currentAthlete.id).set(athlete)
+    alert("Athlete's data saved")
   }
-
-  submit(){}
 
 }

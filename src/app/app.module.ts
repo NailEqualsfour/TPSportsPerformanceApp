@@ -10,8 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ExportComponent } from './export/export.component';
-import { AddstudentComponent } from './addstudent/addstudent.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ImportComponent } from './import/import.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -36,8 +36,8 @@ const firebaseConfig = {
     NavComponent,
     FooterComponent,
     HomeComponent,
-    ExportComponent,
-    AddstudentComponent,
+    DashboardComponent,
+    ImportComponent,
    
   ],
   imports: [
