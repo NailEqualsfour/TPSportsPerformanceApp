@@ -1,46 +1,92 @@
-<div class="grid-container">
+<div class="container-fluid">
     <div class="form-container">
-        <form class="was-validated">
-            <h1>Import Student Information</h1>
-            <br>
-            <h2>Import as CSV</h2>
+        <h1><strong>Import Student Information</strong></h1>
+        <br>
+
+        <h2><strong>Import as CSV</strong></h2>
+        
+        <div class="form-group">
             <div class="form-group">
-                <div class="form-group">
-                    <input id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                <input id="fileSelect" type="file" (change)="readExcel($event)"/>
+            </div>
+        </div>
+        <button [disabled]="excelData === undefined" class="btn btn-dark" (click)="csvImport()" style="margin-right: 20px;">Import</button>
+
+        <br><br><br><br>
+        <h1><strong>Add Athlete</strong></h1>
+        <form class="was-validated">
+            <h2><strong>Student Details</strong></h2>
+            <div class="form-group">
+                <label>Test Type </label>
+                <select class="form-select" placeholder="Enter Test Type" required>
+                    <option value="1">Base</option>
+                    <option value="2">Pre</option>
+                    <option value="3">Post</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Athlete </label>
+                <input class="form-control" placeholder="Enter Athlete Name" required>
+            </div>
+            <br>
+            <label>Gender</label>
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">Male</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">Female</label>
+                    </div>
                 </div>
             </div>
-            <button class="btn btn-dark" type="submit" style="margin-right: 20px;" >Import</button>
+            <br>
+            <div class="form-group">
+                <label>CCA </label>
+                <select class="form-select" placeholder="Enter CCA" required>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Admin </label>
+                <input class="form-control" placeholder="Enter Admin" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Date of Birth </label>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+                        required>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                            <img src="assets/calender.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br>
         </form>
-    </div>
 
-    <div class="form-image">
-        <img src="assets/temasek.jpg" alt="Image Description">
+        <button class="btn btn-dark" type="submit" value="submit" style="margin-right: 20px;">Submit</button>
+        <button class="btn btn-dark" type="submit">Save</button>
     </div>
 </div>
 
 <style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: 50% 50%;
-    }
-
     .form-container {
+        width: 100%;
         padding: 20px;
+        margin: 0 auto;
         border-radius: 10px;
-    }
-
-    .form-container form {
-        width: 100%;
-    }
-
-    .form-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .form-image img {
-        width: 100%;
-        border-radius: 10px;
+        margin-bottom: 20px;
+        /* Add margin at the bottom of the form container */
     }
 </style>
