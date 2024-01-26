@@ -1,5 +1,5 @@
 <div class="grid-container">
-    <div class="form-container">
+    <!-- <div class="form-container">
         <form class="was-validated">
             <h1><strong>Export</strong></h1>
             <br>
@@ -33,10 +33,15 @@
             <br>
             <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Export</button>
         </form>
-    </div>
+    </div> -->
 
     <div class="form-container">
         <h1><strong>Dashboard</strong></h1>
+        <!-- Design to be changed start -->
+        <button (click)="deleteAll()">Wipe all data</button><br><br>
+        <button (click)="export()">Export data to csv</button><br><br>
+        Search: <form [formGroup]="form"><input formControlName="filter" (input)="dataFilter()"></form>
+        <!-- Design to be changed end -->
         <br>
         <table class="table table-dark">
             <thead>
@@ -51,7 +56,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let athlete of athletesData; let i= index">
+                <tr *ngFor="let athlete of visibleAthleteData; let i= index">
                     <th scope="row">{{i+1}}</th>
                     <td>{{athlete.athlete_name}}</td>
                     <td>{{athlete.admin_no}}</td>
