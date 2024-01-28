@@ -1,46 +1,130 @@
-<div class="grid-container">
-    <div class="form-container">
-        <form class="was-validated">
-            <h1>Import Student Information</h1>
-            <br>
-            <h2>Import as CSV</h2>
-            <div class="form-group">
-                <div class="form-group">
-                    <input id="fileSelect" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+<div class="app-container">
+    <form [formGroup]="form">
+        <div class="grid-container">
+            <div class="top-section">
+                <div class="form-container">
+                    <h1>Add Athlete</h1>
+                    <h2>Student Details</h2>
+                    <div class="form-group">
+                        <label>Test Type </label>
+                        <select class="form-select" placeholder="Enter Test Type" required>
+                            <option value="1">Base</option>
+                            <option value="2">Pre</option>
+                            <option value="3">Post</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label>Admin Number</label>
+                        <input id="admin_no" formControlName="admin_no" class="form-control" required>
+                    </div>
+                    <br><br>
+                    <div>
+                        <label>Athlete </label>
+                        <input id="athlete_name" formControlName="athlete_name" class="form-control" required>
+                    </div>
+                    <br><br>
+                    <div>
+                        <label>CCA </label>
+                        <select id="cca" formControlName="cca" class="form-select" required>
+                            <option value="Badminton">Badminton</option>
+                            <option value="Soccer">Soccer</option>
+                            <option value="nil~">nil~</option>
+                        </select>
+                    </div>
+                    <br><br>
+                    <label>Gender</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="Male"
+                                    name="gender">
+                                <label class="form-check-label">Male</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="Female"
+                                    name="gender">
+                                <label class="form-check-label">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+
+                    <div>
+                        <label>Date of Birth </label>
+                        <div class="input-group">
+                            <input id="date_of_birth" formControlName="date_of_birth" class="form-control"
+                                placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" type="date"
+                                required>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button (click)="individualImport()" class="btn btn-dark" style="margin-right: 20px;">Individual
+                        Import</button>
                 </div>
             </div>
-            <button class="btn btn-dark" type="submit" style="margin-right: 20px;" >Import</button>
-        </form>
-    </div>
 
-    <div class="form-image">
-        <img src="assets/temasek.jpg" alt="Image Description">
-    </div>
+            <div class="bottom-section">
+                <div class="form-container">
+                    <h1>Import Student Information</h1>
+                    <br>
+                    <h2>Import as CSV</h2>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input id="fileSelect" type="file"
+                                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                (change)="readExcel($event)" />
+                        </div>
+                    </div>
+                    <button [disabled]="excelData === undefined" class="btn btn-dark" (click)="csvImport()"
+                        style="margin-right: 20px;">Import</button>
+                    <br><br><br><br>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 <style>
+    .app-container {
+        background-image: url('https://www.tp.edu.sg/content/dam/tp-web/images/life-at-tp/digital-backdrops/iconic_8.png');
+        /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        /* Ensure the container takes up the full height of the viewport */
+        display: flex;
+        flex-direction: column;
+    }
+
     .grid-container {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 1fr;
+        /* One column */
+        gap: 20px;
+        /* Adjust the gap between elements */
+        margin: 20px;
+        /* Add margin for overall spacing */
+        flex-grow: 1;
+    }
+
+    .top-section,
+    .bottom-section {
+        width: 70%;
+        margin: 0 auto;
+        /* Center the container horizontally */
     }
 
     .form-container {
         padding: 20px;
         border-radius: 10px;
+        background-color: #f8f9fa;
+        /* Add a background color for better readability */
     }
 
-    .form-container form {
-        width: 100%;
-    }
-
-    .form-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .form-image img {
-        width: 100%;
-        border-radius: 10px;
+    .form-container h2 {
+        font-family: 'Filson Pro', sans-serif;
     }
 </style>

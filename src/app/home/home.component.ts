@@ -128,6 +128,7 @@ export class HomeComponent{
       admin_no: this.currentAthlete.admin_no,
       athlete_name: this.currentAthlete.athlete_name,
       gender: this.currentAthlete.gender,
+      date_of_birth: this.currentAthlete.date_of_birth,
       cca: this.currentAthlete.cca,
 
       height_cm: this.form.value.height_cm,
@@ -166,14 +167,7 @@ export class HomeComponent{
       }
     });
     this.firestore.doc('athletes/'+this.currentAthlete.id).set(athlete)
-  }
-
-  submit(){}
-
-  currentStation = "Body Composition";
-
-  stationChange(newStation: string) {
-    this.currentStation = newStation;
+    alert("Athlete's data saved")
   }
 
 }

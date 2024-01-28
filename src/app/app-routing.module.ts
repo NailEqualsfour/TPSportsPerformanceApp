@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ExportComponent } from './export/export.component';
-import { AddstudentComponent } from './addstudent/addstudent.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ImportComponent } from './import/import.component';
+
 
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
-  {path: 'export', component: ExportComponent},
-  {path: 'addstudent', component: AddstudentComponent},
+  {path: 'admin-dashboard', component: DashboardComponent},
+  {path: 'admin-import', component: ImportComponent},
 ];
 
 @NgModule({
