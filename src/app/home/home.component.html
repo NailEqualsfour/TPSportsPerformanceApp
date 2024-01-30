@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label>Athlete Name</label>
                     <select #athleteSelect class="form-select" placeholder="Choose Athlete" (change)="athleteChange(athleteSelect.value)" required>
-                        <option *ngFor="let athlete of athletesData; let i = index" value="{{i}}">{{ athlete.athlete_name }}</option>
+                        <option *ngFor="let athlete of athletesData; let i = index" value="{{i}}">{{ athlete.athlete_name }} ({{ athlete.admin_no}})</option>
                     </select>
                 </div>
                 <br>
