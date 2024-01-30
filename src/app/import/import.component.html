@@ -1,97 +1,130 @@
-<form [formGroup]="form">
-<div class="container-fluid">
-    <div class="form-container">
-        <h1><strong>Import Student Information</strong></h1>
-        <br>
+<div class="app-container">
+    <form [formGroup]="form">
+        <div class="grid-container">
+            <div class="top-section">
+                <div class="form-container">
+                    <h1>Add Athlete</h1>
+                    <h2>Student Details</h2>
+                    <div class="form-group">
+                        <label>Test Type </label>
+                        <select class="form-select" placeholder="Enter Test Type" required>
+                            <option value="1">Base</option>
+                            <option value="2">Pre</option>
+                            <option value="3">Post</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <label>Admin Number</label>
+                        <input id="admin_no" formControlName="admin_no" class="form-control" required>
+                    </div>
+                    <br><br>
+                    <div>
+                        <label>Athlete </label>
+                        <input id="athlete_name" formControlName="athlete_name" class="form-control" required>
+                    </div>
+                    <br><br>
+                    <div>
+                        <label>CCA </label>
+                        <select id="cca" formControlName="cca" class="form-select" required>
+                            <option value="Badminton">Badminton</option>
+                            <option value="Soccer">Soccer</option>
+                            <option value="nil~">nil~</option>
+                        </select>
+                    </div>
+                    <br><br>
+                    <label>Gender</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="Male"
+                                    name="gender">
+                                <label class="form-check-label">Male</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="gender" value="Female"
+                                    name="gender">
+                                <label class="form-check-label">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
 
-        <h2><strong>Import as CSV</strong></h2>
-        
-        <div class="form-group">
-            <div class="form-group">
-                <input id="fileSelect" type="file" (change)="readExcel($event)"/>
-            </div>
-        </div>
-        <button [disabled]="excelData === undefined" class="btn btn-dark" (click)="csvImport()" style="margin-right: 20px;">Import</button>
-
-        <br><br><br><br>
-        <h1><strong>Add Athlete</strong></h1>
-        <form class="was-validated">
-            <h2><strong>Student Details</strong></h2>
-            <div class="form-group">
-                <label>Test Type </label>
-                <select class="form-select" placeholder="Enter Test Type" required>
-                    <option value="1">Base</option>
-                    <option value="2">Pre</option>
-                    <option value="3">Post</option>
-                </select>
-            </div>
-            <br>
-        </form>
-
-        <div>
-            <label>Admin Number</label>
-            <input id="admin_no" formControlName="admin_no" class="form-control" required>
-        </div>
-        <br><br>
-
-        <div>
-            <label>Athlete </label>
-            <input id="athlete_name" formControlName="athlete_name" class="form-control" required>
-        </div>
-        <br><br>
-
-        <div>
-            <label>CCA </label>
-            <select id="cca" formControlName="cca" class="form-select" required>
-                <option value="Badminton">Badminton</option>
-                <option value="Soccer">Soccer</option>
-                <option value="nil~">nil~</option>
-            </select>
-        </div>
-        <br><br>
-        
-        <label>Gender</label>
-        <div class="row">
-            <div class="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" formControlName="gender" value="Male">
-                    <label class="form-check-label">Male</label>
+                    <div>
+                        <label>Date of Birth </label>
+                        <div class="input-group">
+                            <input id="date_of_birth" formControlName="date_of_birth" class="form-control"
+                                placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" type="date"
+                                required>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button (click)="individualImport()" class="btn btn-dark" style="margin-right: 20px;">Individual
+                        Import</button>
                 </div>
             </div>
-            <div class="col">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" formControlName="gender" value="Female">
-                    <label class="form-check-label">Female</label>
+
+            <div class="bottom-section">
+                <div class="form-container">
+                    <h1>Import Student Information</h1>
+                    <br>
+                    <h2>Import as CSV</h2>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input id="fileSelect" type="file"
+                                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                (change)="readExcel($event)" />
+                        </div>
+                    </div>
+                    <button [disabled]="excelData === undefined" class="btn btn-dark" (click)="csvImport()"
+                        style="margin-right: 20px;">Import</button>
+                    <br><br><br><br>
                 </div>
             </div>
         </div>
-        <br><br>
-
-        <div>
-            <label>Date of Birth </label>
-            <div class="input-group">
-                <input id="date_of_birth" formControlName="date_of_birth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" required>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                        <img src="assets/calender.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-                    </button>
-                </div>
-            </div>
-        </div>
-        <br><br>
-
-        <button (click)="individualImport()" class="btn btn-dark" style="margin-right: 20px;">Individual Import</button>
-    </div>
+    </form>
 </div>
-</form>
 
 <style>
-    .form-container {
-        width: 100%;
-        padding: 20px;
+    .app-container {
+        background-image: url('https://www.tp.edu.sg/content/dam/tp-web/images/life-at-tp/digital-backdrops/iconic_8.png');
+        /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        /* Ensure the container takes up the full height of the viewport */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* One column */
+        gap: 20px;
+        /* Adjust the gap between elements */
+        margin: 20px;
+        /* Add margin for overall spacing */
+        flex-grow: 1;
+    }
+
+    .top-section,
+    .bottom-section {
+        width: 70%;
         margin: 0 auto;
+        /* Center the container horizontally */
+    }
+
+    .form-container {
+        padding: 20px;
         border-radius: 10px;
-        margin-bottom: 20px;
-        /* Add margin at the bottom of the form container */
+        background-color: #f8f9fa;
+        /* Add a background color for better readability */
+    }
+
+    .form-container h2 {
+        font-family: 'Filson Pro', sans-serif;
     }
 </style>

@@ -1,95 +1,106 @@
 <div class="grid-container">
-    <!-- <div class="form-container">
-        <form class="was-validated">
-            <h1><strong>Export</strong></h1>
-            <br>
-            <h2><strong>Export as CSV</strong></h2>
-            <div class="form-group">
-                <div class="form-group">
-                    <label>Test Type</label>
-                    <select class="form-select" placeholder="Enter Test Type" required>
-                        <option value="1">Base</option>
-                        <option value="2">Pre</option>
-                        <option value="3">Post</option>
-                    </select>
-                </div>
-                <label>Gender</label>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault1"
-                                checked>
-                            <label class="form-check-label" for="flexRadioDefault1">Male</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2">Female</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <button class="btn btn-dark" type="submit" style="margin-right: 20px;">Export</button>
-        </form>
-    </div> -->
-
     <div class="form-container">
-        <h1><strong>Dashboard</strong></h1>
-        <!-- Design to be changed start -->
-        <button (click)="deleteAll()">Wipe all data</button><br><br>
-        <button (click)="export()">Export data to csv</button><br><br>
-        Search: <form [formGroup]="form"><input formControlName="filter" (input)="dataFilter()"></form>
-        <!-- Design to be changed end -->
-        <br>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Admin No.</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Date of Birth</th>
-                    <th scope="col">CCA</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let athlete of visibleAthleteData; let i= index">
-                    <th scope="row">{{i+1}}</th>
-                    <td>{{athlete.athlete_name}}</td>
-                    <td>{{athlete.admin_no}}</td>
-                    <td>{{athlete.gender}}</td>
-                    <td>{{athlete.date_of_birth}}</td>
-                    <td>{{athlete.cca}}</td>
-                    <td><button (click)="delete(athlete)" class="btn btn-dark">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Dashboard</h1>
+        <hr>
+        <div class="form-group search-bar">
+            <label for="search" class="visually-hidden">Search:</label>
+            <form [formGroup]="form">
+                <input formControlName="filter" (input)="dataFilter()" class="form-control search-input" id="search"
+                    placeholder="Filter...">
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Admin No.</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">CCA</th>
+                        <th scope="col"><button class="btn btn-danger" (click)="deleteAll()">Delete All</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let athlete of visibleAthleteData; let i= index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{athlete.athlete_name}}</td>
+                        <td>{{athlete.admin_no}}</td>
+                        <td>{{athlete.gender}}</td>
+                        <td>{{athlete.date_of_birth}}</td>
+                        <td>{{athlete.cca}}</td>
+                        <td><button class="btn btn-outline-danger" (click)="delete(athlete)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-success" (click)="export()">Export as CSV</button>
+        </div>
     </div>
 </div>
+
 
 <style>
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr;
-        /* One column */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
-        /* Adjust the gap between elements */
         margin: 20px;
-        /* Add margin for overall spacing */
     }
 
     .form-container {
-        padding: 40px;
+        padding: 20px;
         font-family: 'Filson Pro', sans-serif;
         background-color: #f8f9fa;
-        /* Add a background color for better readability */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .form-container:last-child {
-        text-align: center;
-        /* Align text in the second form container to the center */
+    .form-container h1 {
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-check {
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        margin-right: 10px;
+    }
+
+    .search-bar {
+        position: relative;
+    }
+
+    .search-bar .visually-hidden {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+    }
+
+    .search-bar .search-input {
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        padding: 8px 20px;
+        width: 100%;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-bar .search-input:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+
+    .search-bar .search-input::placeholder {
+        color: #aaa;
     }
 </style>
