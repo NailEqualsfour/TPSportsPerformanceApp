@@ -12,6 +12,7 @@ import * as XLSX from 'xlsx';
 
 export class DashboardComponent {
   
+  currentTestType: any;
   athletesData: any;
   visibleAthleteData: any;
   subscription: Subscription;
@@ -22,6 +23,7 @@ export class DashboardComponent {
   constructor(private firestore: AngularFirestore){}
   
   ngOnInit(){
+    this.currentTestType = 'Base'
     this.subscription = this.firestore.collection('athletes').snapshotChanges().subscribe(snapshots => {
       this.athletesData = snapshots.map(snapshot => {
         const id = snapshot.payload.doc.id;
@@ -29,7 +31,8 @@ export class DashboardComponent {
         return { id, ...data };
       });
       this.athletesData.sort((a: any, b: any) => a.athlete_name.localeCompare(b.athlete_name));
-      this.visibleAthleteData = this.athletesData
+      
+      this.dataFilter()
     });
   }
   
@@ -87,15 +90,21 @@ export class DashboardComponent {
 
     for (let athlete of this.athletesData) {
       if (
-        athlete.athlete_name.toLowerCase().includes(this.form.value.filter) ||
+        (athlete.athlete_name.toLowerCase().includes(this.form.value.filter) ||
         athlete.admin_no.toLowerCase().includes(this.form.value.filter) ||
         athlete.gender.toLowerCase().includes(this.form.value.filter) ||
         athlete.date_of_birth.toLowerCase().includes(this.form.value.filter) ||
-        athlete.cca.toLowerCase().includes(this.form.value.filter) 
+        athlete.cca.toLowerCase().includes(this.form.value.filter)) &&
+        athlete.test_type == this.currentTestType
       ) {
         this.visibleAthleteData.push(athlete)
       }
     }
+  }
+
+  testTypeChange(newTestType: String){
+    this.currentTestType = newTestType;
+    this.dataFilter()
   }
 
   export() {
