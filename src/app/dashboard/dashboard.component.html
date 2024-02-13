@@ -9,6 +9,12 @@
                     placeholder="Filter...">
             </form>
         </div>
+        <label>Test Type: </label>
+        <select #testTypeSelect (change)="testTypeChange(testTypeSelect.value)" required>
+            <option value="Base">Base</option>
+            <option value="Pre">Pre</option>
+            <option value="Post">Post</option>
+        </select>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead class="thead-dark">
@@ -19,6 +25,7 @@
                         <th scope="col">Gender</th>
                         <th scope="col">Date of Birth</th>
                         <th scope="col">CCA</th>
+                        <th scope="col">Date of Fitness Testing</th>
                         <th scope="col"><button class="btn btn-danger" (click)="deleteAll()">Delete All</button></th>
                     </tr>
                 </thead>
@@ -30,6 +37,7 @@
                         <td>{{athlete.gender}}</td>
                         <td>{{athlete.date_of_birth}}</td>
                         <td>{{athlete.cca}}</td>
+                        <td>{{athlete.date_of_update}}</td>
                         <td><button class="btn btn-outline-danger" (click)="delete(athlete)">Delete</button></td>
                     </tr>
                 </tbody>

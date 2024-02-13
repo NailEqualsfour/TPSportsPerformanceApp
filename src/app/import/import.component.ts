@@ -62,13 +62,17 @@ export class ImportComponent {
     }
 
     for (let student of this.excelData) {
-      this.firestore.collection('athletes').add({
-        admin_no: student.admin_no,
-        athlete_name: student.athlete_name,
-        gender: student.gender.charAt(0).toUpperCase() + student.gender.slice(1),
-        date_of_birth: new Date(student.date_of_birth.split("/")[2], student.date_of_birth.split("/")[1] - 1, student.date_of_birth.split("/")[0]).toISOString().split('T')[0],
-        cca: student.cca.charAt(0).toUpperCase() + student.cca.slice(1),
-      });
+      for (let type of ['Base', 'Pre', 'Post']){
+        this.firestore.collection('athletes').add({
+          admin_no: student.admin_no,
+          athlete_name: student.athlete_name,
+          gender: student.gender.charAt(0).toUpperCase() + student.gender.slice(1),
+          date_of_birth: new Date(student.date_of_birth.split("/")[2], student.date_of_birth.split("/")[1] - 1, student.date_of_birth.split("/")[0]).toISOString().split('T')[0],
+          cca: student.cca.charAt(0).toUpperCase() + student.cca.slice(1),
+          test_type: type,
+          date_of_update: '-'
+        });
+      }
     }
     alert(this.excelData.length+' athlete data has been added succesfully');
   }
@@ -102,13 +106,17 @@ export class ImportComponent {
       return
     }
 
-    this.firestore.collection('athletes').add({
-      admin_no: this.form.value.admin_no,
-      athlete_name: this.form.value.athlete_name,
-      gender: this.form.value.gender,
-      cca: this.form.value.cca,
-      date_of_birth: new Date((this.form.value.date_of_birth as any).year.toString() + '-' + (this.form.value.date_of_birth as any).month.toString() + '-' + (this.form.value.date_of_birth as any).day.toString()).toISOString().split('T')[0]
-    });
+    for (let type of ['Base', 'Pre', 'Post']){
+      this.firestore.collection('athletes').add({
+        admin_no: this.form.value.admin_no,
+        athlete_name: this.form.value.athlete_name,
+        gender: this.form.value.gender,
+        cca: this.form.value.cca,
+        date_of_birth: new Date((this.form.value.date_of_birth as any).year.toString() + '-' + (this.form.value.date_of_birth as any).month.toString() + '-' + (this.form.value.date_of_birth as any).day.toString()).toISOString().split('T')[0],
+        test_type: type,
+        date_of_update: '-'
+      });
+    }
     alert('Athlete data has been added succesfully');
     
     this.form.controls.admin_no.reset()

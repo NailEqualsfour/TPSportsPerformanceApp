@@ -14,8 +14,10 @@ export class HomeComponent{
 
   currentAthlete: any;
   currentAthleteIndex: number;
+  currentTestType: String;
   currentStation: string;
   subscription: Subscription;
+  unfilteredAthletesData: any;
   athletesData: any;
   form = new FormGroup({
     'height_cm': new FormControl(null),
@@ -53,15 +55,17 @@ export class HomeComponent{
 
   ngOnInit() {
     this.currentAthleteIndex = 0;
+    this.currentTestType = "Base";
     this.currentStation = "Body Composition";
 
     this.subscription = this.firestore.collection('athletes').snapshotChanges().subscribe(snapshots => {
-      this.athletesData = snapshots.map(snapshot => {
+      this.unfilteredAthletesData = snapshots.map(snapshot => {
         const id = snapshot.payload.doc.id;
         const data = snapshot.payload.doc.data() as { [key: string]: any };
         return { id, ...data };
       });
-      this.athletesData.sort((a: any, b: any) => a.athlete_name.localeCompare(b.athlete_name));
+      this.unfilteredAthletesData.sort((a: any, b: any) => a.athlete_name.localeCompare(b.athlete_name));
+      this.athletesData = this.unfilteredAthletesData.filter((athlete: any) => (athlete as any).test_type == this.currentTestType)
       this.currentAthlete = this.athletesData[0];
 
       this.formRefresh()
@@ -113,6 +117,12 @@ export class HomeComponent{
     this.form.get('twenty_meter_sprint_sec_2')?.setValue(this.currentAthlete.twenty_meter_sprint_sec_2);
   }
 
+  testTypeChange(newTestType: String){
+    this.currentTestType = newTestType;
+    this.athletesData = this.unfilteredAthletesData.filter((athlete: any) => (athlete as any).test_type == this.currentTestType)
+    this.athleteChange(0)
+  }
+
   athleteChange(newAthleteIndex: any){
     this.currentAthlete = this.athletesData[newAthleteIndex];
     this.currentAthleteIndex = newAthleteIndex
@@ -130,6 +140,8 @@ export class HomeComponent{
       gender: this.currentAthlete.gender,
       date_of_birth: this.currentAthlete.date_of_birth,
       cca: this.currentAthlete.cca,
+      test_type: this.currentTestType,
+      date_of_update: new Date().toISOString().split('T')[0],
 
       height_cm: this.form.value.height_cm,
       body_mass_kg: this.form.value.body_mass_kg,
