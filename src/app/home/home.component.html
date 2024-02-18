@@ -8,17 +8,17 @@
                 <h2>Student Details</h2>
                 <div class="form-group">
                     <label>Test Type </label>
-                    <select class="form-select" placeholder="Enter Test Type" required>
-                        <option value="1">Base</option>
-                        <option value="2">Pre</option>
-                        <option value="3">Post</option>
+                    <select #testTypeSelect class="form-select" placeholder="Enter Test Type" (change)="testTypeChange(testTypeSelect.value)" required>
+                        <option value="Base">Base</option>
+                        <option value="Pre">Pre</option>
+                        <option value="Post">Post</option>
                     </select>
                 </div>
                 <br>
                 <div class="form-group">
                     <label>Athlete Name</label>
                     <select #athleteSelect class="form-select" placeholder="Choose Athlete" (change)="athleteChange(athleteSelect.value)" required>
-                        <option *ngFor="let athlete of athletesData; let i = index" value="{{i}}">{{ athlete.athlete_name }} ({{ athlete.admin_no}})</option>
+                        <option *ngFor="let athlete of athletesData; let i = index" value="{{i}}">{{ athlete.athlete_name }} ({{ athlete.admin_no}}){{athlete.test_type}}</option>
                     </select>
                 </div>
                 <br>

@@ -12,6 +12,7 @@ import * as XLSX from 'xlsx';
 
 export class DashboardComponent {
   
+  currentTestType: any;
   athletesData: any;
   visibleAthleteData: any;
   subscription: Subscription;
@@ -22,6 +23,7 @@ export class DashboardComponent {
   constructor(private firestore: AngularFirestore){}
   
   ngOnInit(){
+    this.currentTestType = 'Base'
     this.subscription = this.firestore.collection('athletes').snapshotChanges().subscribe(snapshots => {
       this.athletesData = snapshots.map(snapshot => {
         const id = snapshot.payload.doc.id;
@@ -29,7 +31,8 @@ export class DashboardComponent {
         return { id, ...data };
       });
       this.athletesData.sort((a: any, b: any) => a.athlete_name.localeCompare(b.athlete_name));
-      this.visibleAthleteData = this.athletesData
+      
+      this.dataFilter()
     });
   }
   
@@ -46,8 +49,17 @@ export class DashboardComponent {
       'Athlete Name: '+ athlete.athlete_name +'\n'+
       'Admin Number: '+ athlete.admin_no
       )){
+        let athleteIdList = []
+
+        for (let athleteDetails of this.athletesData) {
+          if (athleteDetails.admin_no == athlete.admin_no)
+          athleteIdList.push(athleteDetails.id)
+        }
+        
         try{
-          this.firestore.doc('athletes/' + athlete.id).delete();
+          for (let id of athleteIdList){
+            this.firestore.doc('athletes/' + id).delete();
+          }
           alert('Athlete data deleted')
         }
         catch(err){
@@ -85,17 +97,35 @@ export class DashboardComponent {
     this.form.value.filter = this.form.value.filter?.toLowerCase()
     this.visibleAthleteData = []
 
-    for (let athlete of this.athletesData) {
-      if (
-        athlete.athlete_name.toLowerCase().includes(this.form.value.filter) ||
-        athlete.admin_no.toLowerCase().includes(this.form.value.filter) ||
-        athlete.gender.toLowerCase().includes(this.form.value.filter) ||
-        athlete.date_of_birth.toLowerCase().includes(this.form.value.filter) ||
-        athlete.cca.toLowerCase().includes(this.form.value.filter) 
-      ) {
-        this.visibleAthleteData.push(athlete)
+    if (this.form.value.filter == 'male') {
+      for (let athlete of this.athletesData) {
+        if (
+          athlete.gender.toLowerCase() == this.form.value.filter &&
+          athlete.test_type == this.currentTestType
+        ) {
+          this.visibleAthleteData.push(athlete)
+        }
       }
     }
+    else {
+      for (let athlete of this.athletesData) {
+        if (
+          (athlete.athlete_name.toLowerCase().includes(this.form.value.filter) ||
+          athlete.admin_no.toLowerCase().includes(this.form.value.filter) ||
+          athlete.gender.toLowerCase().includes(this.form.value.filter) ||
+          athlete.date_of_birth.toLowerCase().includes(this.form.value.filter) ||
+          athlete.cca.toLowerCase().includes(this.form.value.filter)) &&
+          athlete.test_type == this.currentTestType
+        ) {
+          this.visibleAthleteData.push(athlete)
+        }
+      }
+    }
+  }
+
+  testTypeChange(newTestType: String){
+    this.currentTestType = newTestType;
+    this.dataFilter()
   }
 
   export() {
