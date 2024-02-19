@@ -133,7 +133,7 @@ export class DashboardComponent {
     let workbook = XLSX.utils.book_new();
 
     XLSX.utils.book_append_sheet(workbook, XLSX.utils.json_to_sheet(exportData, {header: [
-      'admin_no', 'athlete_name', 'gender', 'date_of_birth', 'cca',
+      'test_type', 'admin_no', 'athlete_name', 'gender', 'date_of_birth', 'cca', 'date_of_update',
       'height_cm', 'body_mass_kg', 'body_fat_percentage', 'muscle_mass_kg', 
       'vert_jump_cm_1', 'vert_jump_cm_2', 
       'med_ball_weight_kg', 'med_ball_chest_cm_1', 'med_ball_chest_cm_2', 
